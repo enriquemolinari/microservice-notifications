@@ -1,7 +1,7 @@
 package notifications.infrastructure;
 
 import notifications.model.Event;
-import notifications.model.InscriptionAdded;
+import notifications.model.OnMessageReceived;
 import redis.clients.jedis.Jedis;
 
 public class RedisSubscriber implements Event {
@@ -16,12 +16,10 @@ public class RedisSubscriber implements Event {
  }
  
  @Override
- public void listenTo(InscriptionAdded event) {
-  try (Jedis jSubscriber = new Jedis()) {
-   var a = new MessageReceived(event);
+ public void listenTo(OnMessageReceived onMessage) {
+  try (Jedis jSubscriber = new Jedis(this.host, this.port)) {
+   var a = new MessageReceived(onMessage);
    jSubscriber.subscribe(a, CHANNEL_NAME);
-//   System.out.println("NNNNNNNNNNNNN" + a.message());
-//   return a.message();
   }
  }
 }

@@ -3,21 +3,19 @@ package notifications.model;
 import java.util.Map;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 public class InscriptionAdded {
-// private String msgAsJson; 
+ private String msgAsJson;
 
-// public InscriptionAdded(String json) {
-//  this.msgAsJson = json;
-// }
-
- public Map<String, String> received(String message) {
-  return this.toMap(message);
+ public InscriptionAdded(String json) {
+  this.msgAsJson = json;
  }
 
- private Map<String, String> toMap(String msgAsJson) {
+ public Map<String, String> toMap() {
   var gson = new Gson();
-  return gson.fromJson(msgAsJson, Map.class);
+  return gson.fromJson(this.msgAsJson,
+    new TypeToken<Map<String, String>>() {
+    }.getType());
  }
-
 }

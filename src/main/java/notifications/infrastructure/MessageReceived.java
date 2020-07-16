@@ -1,19 +1,18 @@
 package notifications.infrastructure;
 
-import notifications.model.InscriptionAdded;
+import notifications.model.OnMessageReceived;
 import redis.clients.jedis.JedisPubSub;
 
 public class MessageReceived extends JedisPubSub {
 
- private InscriptionAdded event;
+ private OnMessageReceived message;
  
- public MessageReceived(InscriptionAdded event) {
-  this.event = event;
+ public MessageReceived(OnMessageReceived event) {
+  this.message = event;
  }
  
  @Override
  public void onMessage(String channel, String message) {
-  System.out.println("aaaaaaaaaaaa" + message);
-  this.event.received(message);
+  this.message.received(message);
  }
 }

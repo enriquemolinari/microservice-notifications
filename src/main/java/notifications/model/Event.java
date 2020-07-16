@@ -2,6 +2,6 @@ package notifications.model;
 
 public interface Event {
 
- void listenTo(InscriptionAdded event);
+ void listenTo(OnMessageReceived event);
  
 }
