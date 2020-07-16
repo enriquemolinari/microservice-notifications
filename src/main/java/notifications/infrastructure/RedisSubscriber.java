@@ -14,12 +14,12 @@ public class RedisSubscriber implements Event {
   this.host = host;
   this.port = port;
  }
- 
+
  @Override
  public void listenTo(OnMessageReceived onMessage) {
   try (Jedis jSubscriber = new Jedis(this.host, this.port)) {
-   var a = new MessageReceived(onMessage);
-   jSubscriber.subscribe(a, CHANNEL_NAME);
+   jSubscriber.subscribe(new RedisMessageReceived(onMessage),
+     CHANNEL_NAME);
   }
  }
 }

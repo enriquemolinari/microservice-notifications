@@ -15,9 +15,8 @@ public class EmailDispatcher implements OnMessageReceived {
  }
 
  @Override
- public void received(String message) {
-  var msg = new InscriptionAdded(message).toMap();
-  System.out.println(msg.get("id"));
-  System.out.println(msg.get("email"));
+ public void messageReceived(String message) {
+  var msg = new InscriptionAdded(message).toMap();  
+  this.provider.send(msg.get("email"), EMAIL_TITLE, "body...");
  }
 }

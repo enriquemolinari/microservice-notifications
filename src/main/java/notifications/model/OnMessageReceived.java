@@ -2,5 +2,5 @@ package notifications.model;
 
 public interface OnMessageReceived {
 
- void received(String message);
+ void messageReceived(String message);
 }
