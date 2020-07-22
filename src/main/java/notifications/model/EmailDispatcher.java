@@ -1,7 +1,6 @@
 package notifications.model;
 
 public class EmailDispatcher implements OnMessageReceived {
- private static final String EMAIL_TITLE = "RadioA Notification";
  private Event listenToEvent;
  private EmailProvider provider;
 
@@ -16,7 +15,7 @@ public class EmailDispatcher implements OnMessageReceived {
 
  @Override
  public void messageReceived(String message) {
-  var msg = new InscriptionAdded(message).toMap(); 
-  this.provider.send(msg.get("email"), EMAIL_TITLE, "body...");
+  var msg = new InscriptionAdded(message); 
+  this.provider.send(msg.email(), msg.title(), msg.body());
  }
 }
