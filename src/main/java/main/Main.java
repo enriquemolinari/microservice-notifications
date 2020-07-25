@@ -15,9 +15,9 @@ public class Main {
   String pubsubPort = Objects
     .requireNonNullElse(System.getProperty("pub-sub-port"), "6379");
 
-  var mail = new EmailDispatcher(
+  new EmailDispatcher(
     new RedisSubscriber(pubsub, Integer.valueOf(pubsubPort)),
-    new EmailVendorProvider());
-  mail.startListening();
+    new EmailVendorProvider())
+  .startListening();
  }
 }
