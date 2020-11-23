@@ -1,5 +1,9 @@
 package notifications.model;
 
+import notifications.model.ports.EmailProvider;
+import notifications.model.ports.Event;
+import notifications.model.ports.OnMessageReceived;
+
 public class EmailDispatcher implements OnMessageReceived {
  private Event listenToEvent;
  private EmailProvider provider;

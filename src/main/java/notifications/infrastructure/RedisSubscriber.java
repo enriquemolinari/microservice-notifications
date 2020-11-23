@@ -1,7 +1,7 @@
 package notifications.infrastructure;
 
-import notifications.model.Event;
-import notifications.model.OnMessageReceived;
+import notifications.model.ports.Event;
+import notifications.model.ports.OnMessageReceived;
 import redis.clients.jedis.Jedis;
 
 public class RedisSubscriber implements Event {

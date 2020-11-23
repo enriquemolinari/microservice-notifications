@@ -1,6 +1,6 @@
 package notifications.infrastructure;
 
-import notifications.model.OnMessageReceived;
+import notifications.model.ports.OnMessageReceived;
 import redis.clients.jedis.JedisPubSub;
 
 public class RedisMessageReceived extends JedisPubSub {

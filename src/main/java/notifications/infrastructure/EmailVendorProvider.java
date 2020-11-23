@@ -1,6 +1,6 @@
 package notifications.infrastructure;
 
-import notifications.model.EmailProvider;
+import notifications.model.ports.EmailProvider;
 
 public class EmailVendorProvider implements EmailProvider {
 
